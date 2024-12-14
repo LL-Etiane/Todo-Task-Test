@@ -45,7 +45,6 @@ class TaskManagementTest extends TestCase
     /** @test */
     public function it_can_update_a_task()
     {
-        // Arrange
         $task = Task::factory()->create();
 
         $updatedData = [
@@ -65,13 +64,10 @@ class TaskManagementTest extends TestCase
     /** @test */
     public function it_can_delete_a_task()
     {
-        // Arrange
         $task = Task::factory()->create();
 
-        // Act
         $response = $this->deleteJson("/api/tasks/{$task->id}");
 
-        // Assert
         $response->assertStatus(204);
 
         $this->assertDatabaseMissing('tasks', ['id' => $task->id]);
