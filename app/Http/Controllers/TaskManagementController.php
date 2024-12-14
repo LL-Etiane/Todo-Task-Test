@@ -31,7 +31,7 @@ class TaskManagementController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string',
+            'title' => 'required|string|max:255',
             'description' => 'required|string',
             'status' => 'nullable|string|in:pending,completed',
         ]);
@@ -56,7 +56,7 @@ class TaskManagementController extends Controller
     public function update(Request $request, Task $task)
     {
         $validated = $request->validate([
-            'title' => 'nullable|string',
+            'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'status' => 'nullable|in:pending,completed',
         ]);
