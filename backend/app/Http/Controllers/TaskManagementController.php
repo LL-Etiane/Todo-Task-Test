@@ -15,7 +15,8 @@ class TaskManagementController extends Controller
      */
     public function index()
     {
-        return Task::paginate(10);
+        $tasks = Task::latest();
+        return $tasks->paginate(10);
     }
 
 
